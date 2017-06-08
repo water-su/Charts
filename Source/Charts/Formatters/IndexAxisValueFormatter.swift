@@ -61,4 +61,12 @@ open class IndexAxisValueFormatter: NSObject, IAxisValueFormatter
         
         return _values[index]
     }
+    
+    open func stringForValueViaIndex(_ count: Int, axis: AxisBase?) -> String {
+        if count < 0 || count >= _valueCount
+        {
+            return ""
+        }
+        return _values[count]
+    }
 }

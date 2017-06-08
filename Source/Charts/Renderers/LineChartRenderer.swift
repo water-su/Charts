@@ -175,8 +175,10 @@ open class LineChartRenderer: LineRadarRenderer
         
         context.beginPath()
         context.addPath(cubicPath)
+        context.setShadow(offset: dataSet.lineShadowOffset, blur: dataSet.lineShadowBlur)
         context.setStrokeColor(drawingColor.cgColor)
         context.strokePath()
+        
         
         context.restoreGState()
     }

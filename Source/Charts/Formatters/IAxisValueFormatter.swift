@@ -27,4 +27,6 @@ public protocol IAxisValueFormatter : NSObjectProtocol
     func stringForValue(_ value: Double,
                         axis: AxisBase?) -> String
     
+    @objc optional func stringForValueViaIndex(_ value: Int,
+                                axis: AxisBase?) -> String
 }
