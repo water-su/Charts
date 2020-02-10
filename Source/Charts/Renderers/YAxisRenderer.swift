@@ -146,7 +146,14 @@ open class YAxisRenderer: AxisRendererBase
         
         for i in stride(from: from, to: to, by: 1)
         {
-            let text = yAxis.getFormattedLabel(i)
+            var text = ""
+            
+            if yAxis.isStringFromIndex {
+                text = yAxis.valueFormatter?.stringForValueViaIndex!(i, axis: yAxis) ?? ""
+            } else {
+                text = yAxis.getFormattedLabel(i)
+            }
+            
             
             ChartUtils.drawText(
                 context: context,

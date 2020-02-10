@@ -182,18 +182,15 @@ open class Highlight: NSObject
         return "Highlight, x: \(_x), y: \(_y), dataIndex (combined charts): \(dataIndex), dataSetIndex: \(_dataSetIndex), stackIndex (only stacked barentry): \(_stackIndex)"
     }
 }
-
-
-// MARK: Equatable
 extension Highlight /*: Equatable*/ {
     open override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? Highlight else { return false }
-
+        
         if self === object
         {
             return true
         }
-
+        
         return _x == object._x
             && _y == object._y
             && dataIndex == object.dataIndex

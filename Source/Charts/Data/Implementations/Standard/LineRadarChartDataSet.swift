@@ -12,8 +12,7 @@
 import Foundation
 import CoreGraphics
 
-
-open class LineRadarChartDataSet: LineScatterCandleRadarChartDataSet, ILineRadarChartDataSet
+@objc open class LineRadarChartDataSet: LineScatterCandleRadarChartDataSet, ILineRadarChartDataSet
 {
     // MARK: - Data functions and accessors
     
@@ -43,7 +42,7 @@ open class LineRadarChartDataSet: LineScatterCandleRadarChartDataSet, ILineRadar
     
     private var _lineWidth = CGFloat(1.0)
     
-    /// line width of the chart (min = 0.0, max = 10)
+    /// line width of the chart (min = 0.2, max = 10)
     ///
     /// **default**: 1
     open var lineWidth: CGFloat
@@ -54,7 +53,18 @@ open class LineRadarChartDataSet: LineScatterCandleRadarChartDataSet, ILineRadar
         }
         set
         {
-            _lineWidth = newValue.clamped(to: 0...10)
+            if newValue < 0.2
+            {
+                _lineWidth = 0.2
+            }
+            else if newValue > 10.0
+            {
+                _lineWidth = 10.0
+            }
+            else
+            {
+                _lineWidth = newValue
+            }
         }
     }
     
@@ -80,6 +90,29 @@ open class LineRadarChartDataSet: LineScatterCandleRadarChartDataSet, ILineRadar
         copy._lineWidth = _lineWidth
         copy.drawFilledEnabled = drawFilledEnabled
         return copy
+    }
+    
+    private var _lineShadowOffset = CGSize(width: 0, height: 0)
+    @objc open var lineShadowOffset: CGSize {
+        get
+        {
+            return _lineShadowOffset
+        }
+        set
+        {
+            _lineShadowOffset = newValue
+        }
+    }
+    private var _lineShadowBlur = CGFloat(0)
+    @objc open var lineShadowBlur: CGFloat {
+        get
+        {
+            return _lineShadowBlur
+        }
+        set
+        {
+            _lineShadowBlur = newValue
+        }
     }
     
 }

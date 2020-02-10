@@ -200,8 +200,12 @@ open class XAxisRenderer: AxisRendererBase
         }
         
         let entries = xAxis.entries
+  
         
-        for i in stride(from: 0, to: entries.count, by: 1)
+        
+        let from = xAxis.isDrawBottomYLabelEntryEnabled ? 0 : 1
+        
+        for i in stride(from: from, to: entries.count, by: 1)
         {
             if centeringEnabled
             {
@@ -217,8 +221,14 @@ open class XAxisRenderer: AxisRendererBase
             
             if viewPortHandler.isInBoundsX(position.x)
             {
-                let label = xAxis.valueFormatter?.stringForValue(xAxis.entries[i], axis: xAxis) ?? ""
-
+                var label = ""
+                
+                if xAxis.isStringFromIndex {
+                    label = xAxis.valueFormatter?.stringForValueViaIndex!(i, axis: xAxis) ?? ""
+                } else {
+                    label = xAxis.valueFormatter?.stringForValue(xAxis.entries[i], axis: xAxis) ?? ""
+                }
+                
                 let labelns = label as NSString
                 
                 if xAxis.isAvoidFirstLastClippingEnabled

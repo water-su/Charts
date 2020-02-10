@@ -12,7 +12,6 @@
 import Foundation
 import CoreGraphics
 
-
 open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
 {
     @objc(LineChartMode)

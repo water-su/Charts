@@ -56,4 +56,12 @@ open class IndexAxisValueFormatter: NSObject, IAxisValueFormatter
         guard values.indices.contains(index), index == Int(value) else { return "" }
         return _values[index]
     }
+    
+    open func stringForValueViaIndex(_ count: Int, axis: AxisBase?) -> String {
+        if count < 0 || count >= _valueCount
+        {
+            return ""
+        }
+        return _values[count]
+    }
 }

@@ -25,6 +25,10 @@ open class XAxis: AxisBase
         case bottomInside
     }
     
+    /// customize by wei: indicates if the bottom x-label entry is drawn or not
+    open var drawBottomYLabelEntryEnabled = true
+    open var isDrawBottomYLabelEntryEnabled: Bool { return drawBottomYLabelEntryEnabled }
+    
     /// width of the x-axis labels in pixels - this is automatically calculated by the `computeSize()` methods in the renderers
     @objc open var labelWidth = CGFloat(1.0)
     

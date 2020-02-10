@@ -77,4 +77,8 @@ public protocol ILineChartDataSet: ILineRadarChartDataSet
     
     /// Sets a custom IFillFormatter to the chart that handles the position of the filled-line for each DataSet. Set this to null to use the default logic.
     var fillFormatter: IFillFormatter? { get set }
+    
+    var lineShadowOffset: CGSize { get set }
+    
+    var lineShadowBlur: CGFloat { get set }
 }
